@@ -1,5 +1,8 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import ProductComponent from '../components/ProductComponent';
+import axios from 'axios';
+
+const api_domain = import.meta.env.VITE_API_DOMAIN
 
 const Homepage = () => {
     const [carousals, setCarousals] = useState([
@@ -8,69 +11,13 @@ const Homepage = () => {
         {"image": "https://m.media-amazon.com/images/I/619geyiQI5L._SX3000_.jpg"},
         {"image": "https://m.media-amazon.com/images/I/81hIlE5xocL._SX3000_.jpg"}
     ])
-
-    const [products, setProducts] = useState([
-  {
-    productID: "p001",
-    productName: "Wireless Headphones",
-    productImage: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-    productPrice: 1999,
-  },
-  {
-    productID: "p002",
-    productName: "Smart Watch",
-    productImage: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-    productPrice: 2999,
-  },
-  {
-    productID: "p003",
-    productName: "Bluetooth Speaker",
-    productImage: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-    productPrice: 1499,
-  },
-  {
-    productID: "p004",
-    productName: "Gaming Mouse",
-    productImage: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-    productPrice: 899,
-  },
-  {
-    productID: "p005",
-    productName: "Mechanical Keyboard",
-    productImage: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-    productPrice: 2199,
-  },
-  {
-    productID: "p006",
-    productName: "USB-C Charger",
-    productImage: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-    productPrice: 699,
-  },
-  {
-    productID: "p007",
-    productName: "Laptop Stand",
-    productImage: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-    productPrice: 1299,
-  },
-  {
-    productID: "p008",
-    productName: "Webcam HD",
-    productImage: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-    productPrice: 1599,
-  },
-  {
-    productID: "p009",
-    productName: "External Hard Drive",
-    productImage: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-    productPrice: 3499,
-  },
-  {
-    productID: "p010",
-    productName: "Portable SSD",
-    productImage: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-    productPrice: 4999,
-  },
-]);
+    useEffect(() => {
+      axios.get(`${api_domain}/api/products`)
+      .then(res => {
+        setProducts(res.data.products)
+      })
+    }, [])
+    const [products, setProducts] = useState([]);
 
 
     return (
@@ -97,7 +44,6 @@ const Homepage = () => {
                     <ProductComponent product = {product}/>
                 )
             })}
-            
         </div>
     )
 }
