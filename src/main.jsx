@@ -8,6 +8,9 @@ import {
 import UserLayout from './layout/userLayout';
 import Homepage from './pages/Homepage';
 import "./styles/global.css"
+import CartPage from './pages/CartPage';
+import Register from './pages/Register';
+import Login from './pages/Login';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +20,19 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <Homepage />
-      }
+      },
+      {
+        path: "cart",
+        element: <CartPage />
+      },
+      {
+        path: "register",
+        element: <Register />
+      },
+      {
+        path: "login",
+        element: <Login />
+      },
     ]
   },
 ]);

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
     return (
@@ -37,7 +38,7 @@ const Header = () => {
                                 <span className="text-lg font-bold">8 Items</span>
                                 <span className="text-info">Subtotal: $999</span>
                                 <div className="card-actions">
-                                    <button className="btn btn-primary btn-block">View cart</button>
+                                    <Link to = "/cart" className="btn btn-primary btn-block">View cart</Link>
                                 </div>
                             </div>
                         </div>
