@@ -1,9 +1,13 @@
 import axios from 'axios'
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { updateCart } from '../globalState/features/cart/cartSlice'
+
 
 const api_domain = import.meta.env.VITE_API_DOMAIN
 
 const ProductComponent = (props) => {
+    const dispatch = useDispatch()
     const addToCart = () => {
         const header = {
             headers: {
@@ -14,6 +18,7 @@ const ProductComponent = (props) => {
         .then(res => {
             console.log(res.data)
             alert(res.data.message)
+            dispatch(updateCart(res.data.cartItems))
         })
         .catch(err => {
             console.log(err.response)

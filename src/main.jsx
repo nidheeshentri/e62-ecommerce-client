@@ -4,6 +4,8 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import store from './globalState/store'
+import { Provider } from 'react-redux'
 
 import UserLayout from './layout/userLayout';
 import Homepage from './pages/Homepage';
@@ -11,6 +13,7 @@ import "./styles/global.css"
 import CartPage from './pages/CartPage';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import OrdersPage from './pages/OrdersPage';
 
 const router = createBrowserRouter([
   {
@@ -33,12 +36,18 @@ const router = createBrowserRouter([
         path: "login",
         element: <Login />
       },
+      {
+        path: "orders",
+        element: <OrdersPage />
+      },
     ]
   },
 ]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router = {router}/>
+    <Provider store={store}>
+      <RouterProvider router = {router}/>
+    </Provider>
   </StrictMode>,
 )
