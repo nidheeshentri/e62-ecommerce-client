@@ -7,7 +7,7 @@ import {
 import store from './globalState/store'
 import { Provider } from 'react-redux'
 
-import UserLayout from './layout/userLayout';
+import UserLayout from './layout/UserLayout';
 import Homepage from './pages/Homepage';
 import "./styles/global.css"
 import CartPage from './pages/CartPage';
